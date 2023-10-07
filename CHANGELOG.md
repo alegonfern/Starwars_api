@@ -1,17 +1,22 @@
-### 3 July 7, 2020
+# Changelog
 
-- Updated to React Router v5.2.0 with new Syntax and Hooks: No more usaged of the `component` property on the Route, new hooks useHistory and useLocation.
+December 6, 2021
 
-### Oct 23, 2020
+- Upgraded all packages to latest version: Webpack v5, React 17, etc.
+- Disabled esLint.
+- The hot reload is not broken, we need to review how to implemented with the new webpack dev server because the `public` property is not allowed anymore as a paratmeter for the deServer, we tried the following iwthout any luck:
 
-- Added support for async/wait using the `@babel/plugin-transform-runtime` plugin. No more regenerator/runtime issue.
-- Replaced now.json with vercel.json
-
-### December 9, 2021
-
-- Support for node 16 and droppped 14.
-- Updated all libraries to the latest
-- Now the prettier us being used as a vscode plugin instead.
-- Dropped eslint (for now)
-
-
+```js
+  devServer: {
+    port,
+    hot: true,
+    allowedHosts: "all",
+    historyApiFallback: true,
+    static: {
+      directory: path.resolve(__dirname, "dist"),
+    },
+    client: {
+      webSocketURL: publicUrl
+    },
+  },
+```

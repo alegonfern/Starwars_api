@@ -3,35 +3,16 @@
 {
 	"name": "Node.js",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/python:0-3.10",
-	"features": {
-		"ghcr.io/devcontainers/features/node:1": {
-			"nodeGypDependencies": true,
-			"version": "16"
-		}
-	},
-
-	"customizations": {
-		"vscode": {
-			"settings": {
-				"editor.defaultFormatter": "esbenp.prettier-vscode",
-				"workbench.editorAssociations": {   
-					"*.md": "vscode.markdown.preview.editor"
-				}
-			},
-		}
-	},
-
-	"onCreateCommand": "npm install && cp .env.example .env",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:0-16",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [3000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "python docs/assets/greeting.py",
+	"postCreateCommand": "npm install && node .devcontainer/welcome.js"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
