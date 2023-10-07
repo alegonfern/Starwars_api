@@ -23,7 +23,16 @@ const Footer = () => {
             return (
               <div className="col mb-5" key={index}>
                 <div className="card h-100">
-                  <img className="card-img-top" src={`https://starwars-visualguide.com/assets/img/characters/${data.result.uid}.jpg`} alt="..." />
+                  {/*Aca se decdido si renderizo la imagen según si es planeta o personaje*/}
+                  <img
+                    className="card-img-top"
+                    src={
+                      isCharacter
+                        ? `https://starwars-visualguide.com/assets/img/characters/${data.result.uid}.jpg`
+                        : `https://starwars-visualguide.com/assets/img/planets/${data.result.uid}.jpg`
+                    }
+                    alt="..."
+                  />
                   <div className="card-body p-4">
                     <div className="text-center">
                       <h5 className="fw-bolder">{data.result.properties.name}</h5>
@@ -41,6 +50,7 @@ const Footer = () => {
                 </div>
               </div>
             );
+
           })}
         </div>
       </div>
